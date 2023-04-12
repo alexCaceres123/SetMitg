@@ -5,8 +5,8 @@ class Card{
         this.number = number
     }
 
-    getHTML(){
+    // getHTML(){
         
-    }
+    // }
 
 }
