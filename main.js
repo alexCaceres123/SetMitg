@@ -1,3 +1,5 @@
+let startGame = document.getElementById("start-game");
+
 function createDeck(){
     let pals = ["oros", "copas", "bastos", "espadas"];
     let myDeck = [];
@@ -32,4 +34,6 @@ function firstPlayerCard(baraja){
     document.getElementById("player-cards").style.backgroundImage = "url('" + image + "')";
 }
 
-firstPlayerCard(allCards.cards)
+startGame.addEventListener('click', function(){
+    firstPlayerCard(allCards.cards)
+})

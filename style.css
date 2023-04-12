@@ -72,10 +72,11 @@ h1{
     height: 25vh;
     background-color: white;
     border-radius: 3px;
-    background-size: cover;    
+    background-size: cover;   
+    background-image: url("img/revers.jpg"); 
 }
 
-.start-game{
+#start-game{
     position: absolute;
     width: 10%;
     background-color: rgb(198, 198, 198);
@@ -87,10 +88,40 @@ h1{
     font-weight: bold;
 }
 
-.start-game:hover{
+#start-game:hover{
     cursor: pointer;
     background-color: green;
     color: white;
+}
+
+#playerPoints{
+    position: absolute;
+    width: 15%;
+    border: 3px solid black;
+    right: 2.5%;
+    top: 11%;
+    text-align: center;
+    height: 38vh;
+    background-color: rgb(198, 198, 198);
+    border-radius: 10px;
+}
+
+#computerPoints{
+    position: absolute;
+    width: 15%;
+    border: 3px solid black;
+    right: 2.5%;
+    top: 54%;
+    text-align: center;
+    height: 38vh;
+    background-color: rgb(198, 198, 198);
+    border-radius: 10px;
+}
+
+.title_points{
+    border-bottom: 2px solid black;
+    padding: 1vh;
+    font-weight: bold;
 }
 
 
