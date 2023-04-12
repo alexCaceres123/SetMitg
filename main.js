@@ -9,17 +9,27 @@ function createDeck(){
 
             if(j <= 7){
                 card = new Card(i, j, j);
+                myDeck.push(card);
             }
             else if(j >= 10){
                 card = new Card(i, 0.5, j);
+                myDeck.push(card);
             }
-
-            myDeck.push(card);
         }
     }
 
     let final_deck = new Deck(myDeck);
-    console.log(final_deck);
+    return final_deck
 }
 
-createDeck();
+let allCards = createDeck();
+
+function firstPlayerCard(baraja){    
+    let CartRandomNumber = Math.floor(Math.random() * baraja.length) + 1;
+    let pal = baraja[CartRandomNumber].suit;
+    let number = baraja[CartRandomNumber].number;
+    let image = `img/${pal}/${pal}_${number}.jpg`
+    document.getElementById("player-cards").style.backgroundImage = "url('" + image + "')";
+}
+
+firstPlayerCard(allCards.cards)
