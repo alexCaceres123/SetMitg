@@ -5,37 +5,34 @@
     font-family: "Calibri";
 }
 
+body{
+    background-color: black;
+}
+
 h1{
     text-align: center;
     padding: 1%;
+    color: white;
 }
 
 .dashboard{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    width: 60%;
-    height: 85vh;
-    background-color: rgb(2, 129, 2);
+    width: 98%;
+    height: 88vh;
+    background-image: url("img/verde.png");
     margin: auto;
-    border-radius: 10px;
-    border: 5px solid black;
+    border: 16px solid;
+    border-image: url("img/madera.jpg") 20 round;
 }
 
 .dashboard p{
     text-align: center;
     font-size: 3vh;
-    padding: 1vh;
     font-weight: bold;
-}
-
-#separate{
-    background-color: black;
-    border-radius: 0px;
-    height: 3vh;
-    width: 100%;
-    margin: 0;
+    color: white;
 }
 
 #player{
@@ -44,11 +41,10 @@ h1{
     align-items: center;
     background-image: url("img/deck_image.jpg");
     background-size: cover;
-    width: 90%;
+    width: 58%;
     height: 29vh;
     border-radius: 15px;
     background-size: 102%;
-    border: 4px solid rgb(201, 1, 1);   
     padding: 1vh;
 }
 
@@ -58,11 +54,10 @@ h1{
     align-items: center;
     background-image: url("img/deck_image.jpg");
     background-size: cover;
-    width: 90%;
+    width: 58%;
     height: 29vh;
     border-radius: 15px;
     background-size: 102%;
-    border: 4px solid rgb(201, 1, 1);   
     padding: 1vh;
     margin-bottom: 3vh;
 }
@@ -79,13 +74,14 @@ h1{
 #start-game{
     position: absolute;
     width: 10%;
-    background-color: rgb(198, 198, 198);
+    background-color: #E5E7E9;
     border-bottom: 4px solid black;
     border-radius: 15px;
     padding: 1.5vh;
     text-align: center;
-    left: 4%;
+    left: 3%;
     font-weight: bold;
+    top: 14%;
 }
 
 #start-game:hover{
@@ -98,11 +94,11 @@ h1{
     position: absolute;
     width: 15%;
     border: 3px solid black;
-    right: 2.5%;
-    top: 11%;
+    right: 4%;
+    top: 20%;
     text-align: center;
-    height: 38vh;
-    background-color: rgb(198, 198, 198);
+    height: 32vh;
+    background-color: #E5E7E9;
     border-radius: 10px;
 }
 
@@ -110,11 +106,11 @@ h1{
     position: absolute;
     width: 15%;
     border: 3px solid black;
-    right: 2.5%;
-    top: 54%;
+    right: 4%;
+    top: 60%;
     text-align: center;
-    height: 38vh;
-    background-color: rgb(198, 198, 198);
+    height: 32vh;
+    background-color: #E5E7E9;
     border-radius: 10px;
 }
 
