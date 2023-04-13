@@ -124,6 +124,15 @@ h1{
     font-weight: bold;
 }
 
+#computer-cards{
+    width: 16%;
+    height: 25vh;
+    background-color: white;
+    border-radius: 3px;
+    background-size: cover;   
+    background-image: url("img/revers.jpg"); 
+}
+
 
 
 

@@ -22,5 +22,33 @@ class Deck{
 
         this.cards = shuffle_arr;
     }
+
+    createDeck(){
+        let pals = ["oros", "copas", "bastos", "espadas"];
+        let myDeck = [];
+
+        for(let i of pals){
+            for(let j = 1; j <= 12; j++){
+
+                let card;
+
+                if(j <= 7){
+                    card = new Card(i, j, j);
+                    myDeck.push(card);
+                }
+                else if(j >= 10){
+                    card = new Card(i, 0.5, j);
+                    myDeck.push(card);
+                }
+            }
+        }
+        this.cards = myDeck;
+    }
+
+    getCard(){
+        let CartRandomNumber = Math.floor(Math.random() * this.cards.length - 1) + 1;
+        return this.cards[CartRandomNumber];
+    }
+
 }
 
