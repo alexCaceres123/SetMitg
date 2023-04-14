@@ -8,5 +8,10 @@ class jugador{
 
     hit(carta){
         this.cards.push(carta)
+        this.points += carta.value;
+    }   
+
+    allPoints(){
+        return this.points;
     }
 }

@@ -167,6 +167,12 @@ h1{
     top: 33%
 }
 
+#acabaTorn:hover{
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
 
 
 

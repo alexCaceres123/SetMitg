@@ -6,29 +6,40 @@ class Game{
     }
 
     iniciar(allCards){
-        let card = allCards.getCard()
+        let card = allCards.getCard();
         let image = `img/${card.suit}/${card.suit}_${card.number}.jpg`
-        this.player.hit(card)
+        this.player.hit(card);
         this.vista.changeBackgroundCardPlayer(image);
-        card = allCards.getCard()
+        card = allCards.getCard();
         image = `img/${card.suit}/${card.suit}_${card.number}.jpg`
-        this.computer.hit(card)
+        this.computer.hit(card);
         this.vista.changeBackgroundCardComputer(image);
         this.vista.buttonsStartStyle();
+        this.checkPoints();
     }
 
     getPlayerCard(allCards){
         let card = allCards.getCard();
-        let image = `img/${card.suit}/${card.suit}_${card.number}.jpg`
-        this.player.hit(card)
+        let image = `img/${card.suit}/${card.suit}_${card.number}.jpg`;
+        this.player.hit(card);
+
         let htmlcarta = `<div id="player-cards" style="background-image: url('${image}')"></div>`;
         this.vista.addDivCard(htmlcarta);
-        this.updatePoints(card.value);
+
+        let addP = `<p>${card.value} points</p>`;
+        this.vista.addPointsInPlayerPoints(addP);
+
+        this.checkPoints();
     }
 
-    updatePoints(pointsCard){
-        let addP = `<p>${pointsCard} points</p>`
-        this.vista.addPointsInPlayerPoints(addP)
+    checkPoints(){
+        let totalPoints = this.player.allPoints();
+        if(totalPoints > 7.5){
+            this.acabarTorn();
+        }
     }
 
+    acabarTorn(){
+        this.vista.buttonsNoneStyle();   
+    }
 }

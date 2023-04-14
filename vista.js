@@ -32,4 +32,9 @@ class Vista{
         this.divPointsPlayer.innerHTML += points
     }
 
+    buttonsNoneStyle(){
+        this.buttonAgafarCarta.style.display = "none";
+        this.buttonAcabaTorn.style.display = "none";
+    }
+
 }
