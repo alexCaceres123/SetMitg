@@ -24,7 +24,7 @@ h1{
     height: 88vh;
     background-image: url("img/verde.png");
     margin: auto;
-    border: 16px solid;
+    border: 20px solid;
     border-image: url("img/madera.jpg") 20 round;
 }
 
@@ -64,22 +64,32 @@ h1{
 
 #player-cards{
     width: 16%;
-    height: 25vh;
+    height: 26vh;
     background-color: white;
     border-radius: 3px;
     background-size: cover;   
     background-image: url("img/revers.jpg"); 
 }
 
+#computer-cards{
+    width: 16%;
+    height: 26vh;
+    background-color: white;
+    border-radius: 3px;
+    background-size: cover;   
+    background-image: url("img/revers.jpg"); 
+}
+
+
 #start-game{
     position: absolute;
-    width: 10%;
+    width: 8%;
     background-color: #E5E7E9;
     border-bottom: 4px solid black;
     border-radius: 15px;
     padding: 1.5vh;
     text-align: center;
-    left: 3%;
+    left: 4%;
     font-weight: bold;
     top: 14%;
 }
@@ -120,14 +130,26 @@ h1{
     font-weight: bold;
 }
 
-#computer-cards{
-    width: 16%;
-    height: 25vh;
-    background-color: white;
-    border-radius: 3px;
-    background-size: cover;   
-    background-image: url("img/revers.jpg"); 
+#agafarCarta{
+    display: none;
+    position: absolute;
+    width: 8%;
+    background-color: #E5E7E9;
+    border-bottom: 4px solid black;
+    border-radius: 15px;
+    padding: 1.5vh;
+    text-align: center;
+    left: 13%;
+    font-weight: bold;
+    top: 14%
 }
+
+#agafarCarta:hover{
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
 
 
 

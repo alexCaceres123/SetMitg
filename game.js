@@ -14,6 +14,9 @@ class Game{
         image = `img/${card.suit}/${card.suit}_${card.number}.jpg`
         this.computer.hit(card)
         document.getElementById("computer-cards").style.backgroundImage = "url('" + image + "')";
+
+        document.querySelector("#start-game p").innerHTML = "Joc nou";
+        document.getElementById("agafarCarta").style.display = "block"
         
     }
 }
