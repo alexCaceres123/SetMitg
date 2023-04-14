@@ -4,5 +4,4 @@ class Card{
         this.value = value;
         this.number = number
     }
-
 }

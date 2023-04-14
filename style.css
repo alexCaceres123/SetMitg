@@ -101,6 +101,8 @@ h1{
 }
 
 #playerPoints{
+    display: flex;
+    flex-direction: column;
     position: absolute;
     width: 15%;
     border: 3px solid black;
@@ -110,6 +112,7 @@ h1{
     height: 32vh;
     background-color: #E5E7E9;
     border-radius: 10px;
+    /* overflow-y: scroll; */
 }
 
 #computerPoints{
@@ -148,6 +151,20 @@ h1{
     cursor: pointer;
     background-color: green;
     color: white;
+}
+
+#acabaTorn{
+    display: none;
+    position: absolute;
+    width: 8%;
+    background-color: #E5E7E9;
+    border-bottom: 4px solid black;
+    border-radius: 15px;
+    padding: 1.5vh;
+    text-align: center;
+    left: 8%;
+    font-weight: bold;
+    top: 33%
 }
 
 
