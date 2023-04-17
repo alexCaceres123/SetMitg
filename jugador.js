@@ -14,4 +14,9 @@ class jugador{
     allPoints(){
         return this.points;
     }
+
+    resetStats(){
+        this.cards = [];
+        this.points = 0;
+    }
 }

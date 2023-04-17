@@ -5,7 +5,6 @@ class Deck{
 
     pop(indxCard){
         this.cards.splice(indxCard, 1);
-        console.log(this.cards);
     }
 
     push(cards){

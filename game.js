@@ -81,6 +81,14 @@ class Game{
     }
 
     gameWinner(nameWinner){
+        this.vista.buttonsNoneStyle(); 
         this.vista.stateDivWinnerGame(nameWinner);
+    }
+
+    resetGame(allCards){
+        this.vista.resetVista();
+        this.player.resetStats();
+        this.computer.resetStats();
+        this.iniciar(allCards);
     }
 }

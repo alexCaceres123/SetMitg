@@ -1,6 +1,5 @@
 class Vista{
     constructor(){
-        this.textStartGame = document.querySelector("#start-game p");
         this.buttonStartGame = document.querySelector("#start-game");
         this.buttonAgafarCarta = document.getElementById("agafarCarta");
         this.buttonAcabaTorn = document.getElementById("acabaTorn");
@@ -11,6 +10,7 @@ class Vista{
         this.divPointsPlayer = document.getElementById("playerPoints");
         this.divPointsComputer = document.getElementById("computerPoints");
         this.divWinnerGame = document.getElementById("winner");
+        this.buttonResetGame = document.getElementById("reset");
     }
 
     changeBackgroundCardPlayer(img){
@@ -22,7 +22,8 @@ class Vista{
     }
 
     buttonsStartStyle(){
-        this.textStartGame.innerHTML = "Joc nou";
+        this.buttonStartGame.style.display = "None";
+        this.buttonResetGame.style.display = "block";
         this.buttonAgafarCarta.style.display = "block";
         this.buttonAcabaTorn.style.display = "block";
     }
@@ -56,5 +57,13 @@ class Vista{
             this.divWinnerGame.style.top = "70%";
             this.divWinnerGame.style.display = "block";
         }
+    }
+
+    resetVista(){
+        this.divPlayer.innerHTML = `<div id="player-cards"></div>`;
+        this.divComputer.innerHTML = `<div id="computer-cards"></div>`;
+        this.divPointsPlayer.innerHTML = `<p class="title_points">Player Points</p>`;
+        this.divPointsComputer.innerHTML = `<p class="title_points">Computer Points</p>`;
+        this.divWinnerGame.style.display = "None";
     }
 }
