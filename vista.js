@@ -60,8 +60,8 @@ class Vista{
     }
 
     resetVista(){
-        this.divPlayer.innerHTML = `<div id="player-cards"></div>`;
-        this.divComputer.innerHTML = `<div id="computer-cards"></div>`;
+        this.divPlayer.innerHTML = "";
+        this.divComputer.innerHTML = "";
         this.divPointsPlayer.innerHTML = `<p class="title_points">Player Points</p>`;
         this.divPointsComputer.innerHTML = `<p class="title_points">Computer Points</p>`;
         this.divWinnerGame.style.display = "None";

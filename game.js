@@ -12,14 +12,12 @@ class Game{
         this.vista.changeBackgroundCardPlayer(image);
         let addP = `<p>${card.value} points</p>`;
         this.vista.addPointsInPlayerDiv(addP)
-
         card = allCards.getCard();
         image = `img/${card.suit}/${card.suit}_${card.number}.jpg`
         this.computer.hit(card);
         this.vista.changeBackgroundCardComputer(image);
         addP = `<p>${card.value} points</p>`;
         this.vista.addPointsInComputerDiv(addP)
-
         this.vista.buttonsStartStyle();
     }
 
@@ -46,13 +44,18 @@ class Game{
     }
 
     computerPlays(allCards){
-        while(true){
-            let val = this.jugada(allCards, "computer");
-            if(val != "continue"){
-                this.gameWinner(val);
-                break;
+        let val = this.computerCheckPoints();
+        if(val == "computer"){
+            this.gameWinner(val);
+        }else{
+            while(true){
+                val = this.jugada(allCards, "computer");
+                if(val != "continue"){
+                    this.gameWinner(val);
+                    break;
+                }
             }
-        }
+        }  
     }
 
     playerCheckPoints(){
@@ -66,7 +69,7 @@ class Game{
         let totalPlayerPoints = this.player.allPoints();
         let totalComputerPoints = this.computer.allPoints();
 
-        if(totalComputerPoints > totalPlayerPoints && totalComputerPoints <= 7.5){
+        if(totalComputerPoints > totalPlayerPoints && totalComputerPoints <= 7.5 || totalComputerPoints == totalPlayerPoints){
             return "computer";
         }else if(totalComputerPoints > 7.5){
             return "player";
@@ -89,6 +92,8 @@ class Game{
         this.vista.resetVista();
         this.player.resetStats();
         this.computer.resetStats();
-        this.iniciar(allCards);
+        this.vista.buttonsStartStyle();
+        this.jugada(allCards, "player");
+        this.jugada(allCards, "computer");
     }
 }
