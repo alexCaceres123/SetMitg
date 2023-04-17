@@ -8,13 +8,16 @@ let agafarCartaButton = document.getElementById("agafarCarta");
 
 allDeck.createDeck();
 
+vista.buttonAcabaTorn.addEventListener('click', function(){
+    game.acabaTorn(allDeck);
+})
 
-agafarCartaButton.addEventListener('click', function(){
-    game.getPlayerCard(allDeck);
+vista.buttonAgafarCarta.addEventListener('click', function(){
+    game.jugada(allDeck, "player");
 })
 
 
-startGame.addEventListener('click', function(){
+vista.buttonStartGame.addEventListener('click', function(){
     game.iniciar(allDeck);
 })
 

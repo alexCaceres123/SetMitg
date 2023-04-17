@@ -3,8 +3,9 @@ class Deck{
         this.cards = cards;
     }
 
-    pop(){
-        this.cards.pop()
+    pop(indxCard){
+        this.cards.splice(indxCard, 1);
+        console.log(this.cards);
     }
 
     push(cards){
@@ -47,7 +48,9 @@ class Deck{
 
     getCard(){
         let CartRandomNumber = Math.floor(Math.random() * this.cards.length - 1) + 1;
-        return this.cards[CartRandomNumber];
+        let carta = this.cards[CartRandomNumber];
+        this.pop(CartRandomNumber);
+        return carta;
     }
 
 }
