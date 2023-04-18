@@ -13,6 +13,24 @@ class Vista{
         this.buttonResetGame = document.getElementById("reset");
     }
 
+    listen(func1, func2, func3, func4){
+        this.buttonResetGame.addEventListener('click', () => {
+            func1();
+        });
+
+        this.buttonAcabaTorn.addEventListener('click', function(){
+            func2();
+        })
+        
+        this.buttonAgafarCarta.addEventListener('click', function(){
+            func3();
+        })
+
+        this.buttonStartGame.addEventListener('click', function(){
+            func4();
+        })
+    };
+
     changeBackgroundCardPlayer(img){
         this.playerCard.style.backgroundImage = "url('" + img + "')";
     }

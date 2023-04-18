@@ -5,24 +5,25 @@ let computer = new jugador("Computer", 100);
 let vista = new Vista();
 let game = new Game(player, computer, vista);
 
-
-vista.buttonResetGame.addEventListener('click', function(){
+function resetGame(){
     allDeck = new Deck();
     allDeck.createDeck();
     game.resetGame(allDeck);
-})
+}
 
-vista.buttonAcabaTorn.addEventListener('click', function(){
+function acabarTorn(){
     game.acabaTorn(allDeck);
-})
+}
 
-vista.buttonAgafarCarta.addEventListener('click', function(){
+function agafarCartas(){
     game.jugada(allDeck, "player");
-})
+}
 
-vista.buttonStartGame.addEventListener('click', function(){
+function startGames(){
     game.iniciar(allDeck);
-})
+}
+
+vista.listen(resetGame, acabarTorn, agafarCartas, startGames);
 
 
 
