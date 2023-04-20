@@ -1,5 +1,6 @@
 /**
- * Explicació de game
+ * Funció encarragade de gestionar tot el funcionament
+ * del joc
  */
 export default class Game {
   /**
@@ -14,7 +15,9 @@ export default class Game {
   }
 
   /**
-   * Explicació de game
+   * Aquesta funció será cirdada al clicar el botó StartGame,
+   * el que fa es agafar una carta per el Player i el Computer
+   * i actualitza les stats dels jugadors i la vista
    * @param {Deck} allCards
    */
   iniciar(allCards) {
@@ -34,7 +37,10 @@ export default class Game {
   }
 
   /**
-   * Explicació de game
+   * Aquesta funció es cridara quan un dels jugadors a través del
+   * parametre jugador que es passara "player" o computer" vulgui
+   * agafar carta i actualitzara les stats de jugador i vista. També serà
+   * l'encarregada de cridar les funcions de checkPoints()
    * @param {Deck} allCards
    * @param {string} jugador
    * @return {String}
@@ -60,8 +66,12 @@ export default class Game {
       return val;
     }
   }
+
   /**
-   * Explicació de game
+   * Funció que s'activarà quan el player acabi torn.
+   * El que fa es que l'ordinador jugi, fent un bucle infinit fins que
+   * guanyi o perdi. El bucle no es fará si al acabar torn del jugador
+   * l'ordinador ja ha guanyat sense necessitat de agafar cap carta
    * @param {Deck} allCards
    */
   computerPlays(allCards) {
@@ -78,8 +88,10 @@ export default class Game {
       }
     }
   }
+
   /**
-   * Explicació de game
+   * Mira els punts del Player i verifica que no s'ha pasat
+   * de 7.5 punts
    */
   playerCheckPoints() {
     const totalPoints = this.player.allPoints();
@@ -87,8 +99,11 @@ export default class Game {
       this.gameWinner('computer');
     }
   }
+
   /**
-   * Explicació de game
+   * Mira els punts del jugador Computer i verifica qui ha guanyat
+   * i ho rentorna. Si no ha guanyat ni perdut retorna que continui
+   * per tal de que el bucle infinit de ComputerPlays segueixi.
    * @return {String}
    */
   computerCheckPoints() {
@@ -103,24 +118,32 @@ export default class Game {
       return 'continue';
     }
   }
+
   /**
-   * Explicació de game
+   * Quan el Player cliqui el boto acabar torn es crida
+   * aquesta funció que li diu a la vista cridi la funcio
+   * buttonsNoneStyle i fa que començi a jugar l'ordinador
    * @param {Deck} allCards
    */
   acabaTorn(allCards) {
     this.vista.buttonsNoneStyle();
     this.computerPlays(allCards);
   }
+
   /**
-   * Explicació de game
+   * Funció encarregadar de pasar a la vista el nom de qui ha
+   * guanyat el joc i també cirdar la funció buttonNoneStyle
    * @param {String} nameWinner
    */
   gameWinner(nameWinner) {
     this.vista.buttonsNoneStyle();
     this.vista.stateDivWinnerGame(nameWinner);
   }
+
   /**
-   * Explicació de game
+   * Funció encarregada de resetejar el joc fent que totes
+   * les classes cridin les seves funcións de reseteig i comença
+   * una nova jugada
    * @param {Deck} allCards
    */
   resetGame(allCards) {
