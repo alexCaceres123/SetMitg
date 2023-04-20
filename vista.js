@@ -1,9 +1,9 @@
 /**
- * Explicació de game
+ * Classe encarregada de cambiar / actualitzar el HTML i CSS
  */
 export default class Vista {
   /**
-   * xd
+   * Constructor on hi han totes les etiquetes del html que utilitzare
    */
   constructor() {
     this.buttonStartGame = document.querySelector('#start-game');
@@ -18,7 +18,14 @@ export default class Vista {
     this.divWinnerGame = document.getElementById('winner');
     this.buttonResetGame = document.getElementById('reset');
   }
+
   /**
+   * Aquesta funcio es l'encarregada de fer els AddEventListener
+   * dels diferents botons del joc i te les següents funcions:
+   * - func1: crida la funcio resetGame de main
+   * - func2: crida la funcio acabarTorn de main
+   * - func3: crida la funcio agafarCartas de main
+   * - func4: crida la funcio startGame de main
    * @param {main.resetGame} func1
    * @param {acabarTorn} func2
    * @param {agafarCartas} func3
@@ -41,20 +48,31 @@ export default class Vista {
       func4();
     });
   };
+
   /**
+   * funció encarregada de cambiar el wallpaper inicial de la
+   * carta predeterminada del Player
    * @param {string} img
    */
   changeBackgroundCardPlayer(img) {
     this.playerCard.style.backgroundImage = 'url(\'' + img + '\')';
   }
+
   /**
+   * funció encarregada de cambiar el wallpaper inicial de la
+   * carta predeterminada del Computer
    * @param {string} img
    */
   changeBackgroundCardComputer(img) {
     this.computerCard.style.backgroundImage = 'url(\'' + img + '\')';
   }
+
   /**
-   * xd
+   * Aquesta funció mostra els botons:
+   * -resetGame
+   * -agafarCarta
+   * -acabarTorn
+   * I posa en display none el boton StartGame
    */
   buttonsStartStyle() {
     this.buttonStartGame.style.display = 'None';
@@ -62,38 +80,58 @@ export default class Vista {
     this.buttonAgafarCarta.style.display = 'block';
     this.buttonAcabaTorn.style.display = 'block';
   }
+
   /**
+   * Funció que afegeix la template de les cartes al div
+   * del Player
    * @param {string} template
    */
   addDivPlayerCard(template) {
     this.divPlayer.innerHTML += template;
   }
+
   /**
+   * Funció que afegeix la template de les cartes al div
+   * del Computer
    * @param {string} template
    */
   addDivComputerCard(template) {
     this.divComputer.innerHTML += template;
   }
+
   /**
+   *Al afegir una carta es l'encarregada de afegir els punts
+   * en el div dels punts del Player
    * @param {int} points
    */
   addPointsInPlayerDiv(points) {
     this.divPointsPlayer.innerHTML += points;
   }
+
   /**
+   * Al afegir una carta es l'encarregada de afegir els punts
+   * en el div dels punts del Computer
    * @param {int} points
    */
   addPointsInComputerDiv(points) {
     this.divPointsComputer.innerHTML += points;
   }
+
   /**
+   * Funció encarragada a posar en display none els botons:
+   * -agafarCarta
+   * -acabarTorn
    * xd
    */
   buttonsNoneStyle() {
     this.buttonAgafarCarta.style.display = 'none';
     this.buttonAcabaTorn.style.display = 'none';
   }
+
   /**
+   * En aquesta funció li pasarem el nom del guanyador
+   * i depenguent de qui sigui posara el divWinnerGame
+   * a sobre del Player o del Computer
    * @param {string} nameWinner
    */
   stateDivWinnerGame(nameWinner) {
@@ -105,8 +143,10 @@ export default class Vista {
       this.divWinnerGame.style.display = 'block';
     }
   }
+
   /**
-   * xd
+   * Aquesta funció es crida al clicar el botor resetGame
+   * i el que fa es posar el joc desde 0 resetejan la vista
    */
   resetVista() {
     this.divPlayer.innerHTML = '';

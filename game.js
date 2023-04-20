@@ -37,7 +37,7 @@ export default class Game {
    * Explicació de game
    * @param {Deck} allCards
    * @param {string} jugador
-   * @return {val}
+   * @return {String}
    */
   jugada(allCards, jugador) {
     const card = allCards.getCard();

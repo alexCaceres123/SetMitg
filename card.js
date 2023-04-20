@@ -1,5 +1,8 @@
 /**
- * Explicació de game
+ * La classe card la tenim per obtenir les dades de les cartes que son:
+ * -suit: [oros, bastos, copas, espadas]
+ * -value: quan costa la carta
+ * -number: el numero que te la carta
  */
 export default class Card {
   /**

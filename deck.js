@@ -1,6 +1,8 @@
 import Card from './card.js';
+
 /**
- * Explicació de game
+ * Aquesta classe la utilitzarem per tenir la nostres baraja
+ * i tenir totes les cartes emmagatzemades
  */
 export default class Deck {
   /**
@@ -9,20 +11,20 @@ export default class Deck {
   constructor(cards) {
     this.cards = cards;
   }
+
   /**
+   * Al agafar una carta aquesta funció serà
+   * cridada per eliminar aquella mateixa carta
+   * de la Deck
    * @param {int} indxCard
    */
   pop(indxCard) {
     this.cards.splice(indxCard, 1);
   }
+
   /**
-   * @param {string} cards
-   */
-  push(cards) {
-    this.cards.push(cards);
-  }
-  /**
-   * xd
+   * Funció que crea la baralla amb totes les
+   * cartes
    */
   createDeck() {
     const pals = ['oros', 'copas', 'bastos', 'espadas'];
@@ -43,8 +45,11 @@ export default class Deck {
     }
     this.cards = myDeck;
   }
+
   /**
-   * @return {[]}
+   * Funció que serà cridada en la classe game
+   * que retornara una clarta de la Deck
+   * @return {Card}
    */
   getCard() {
     const CartRandomNumber=Math.floor(Math.random()*this.cards.length-1)+1;
