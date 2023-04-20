@@ -1,99 +1,134 @@
-class Game{
-    constructor(player, computer, vista){
-        this.player = player;
-        this.computer = computer;
-        this.vista = vista;
+/**
+ * Explicació de game
+ */
+export default class Game {
+  /**
+   * @param {Jugador} player
+   * @param {Jugador} computer
+   * @param {Vista} vista
+   */
+  constructor(player, computer, vista) {
+    this.player = player;
+    this.computer = computer;
+    this.vista = vista;
+  }
+
+  /**
+   * Explicació de game
+   * @param {Deck} allCards
+   */
+  iniciar(allCards) {
+    let card = allCards.getCard();
+    let image = `img/${card.suit}/${card.suit}_${card.number}.jpg`;
+    this.player.hit(card);
+    this.vista.changeBackgroundCardPlayer(image);
+    let addP = `<p>${card.value} points</p>`;
+    this.vista.addPointsInPlayerDiv(addP);
+    card = allCards.getCard();
+    image = `img/${card.suit}/${card.suit}_${card.number}.jpg`;
+    this.computer.hit(card);
+    this.vista.changeBackgroundCardComputer(image);
+    addP = `<p>${card.value} points</p>`;
+    this.vista.addPointsInComputerDiv(addP);
+    this.vista.buttonsStartStyle();
+  }
+
+  /**
+   * Explicació de game
+   * @param {Deck} allCards
+   * @param {string} jugador
+   * @return {val}
+   */
+  jugada(allCards, jugador) {
+    const card = allCards.getCard();
+
+    const image = `img/${card.suit}/${card.suit}_${card.number}.jpg`;
+    let htmlcarta = `<div id="${jugador}-cards"`;
+    htmlcarta += `style="background-image: url('${image}')"></div>`;
+    const addP = `<p>${card.value} points</p>`;
+
+    if (jugador === 'player') {
+      this.vista.addDivPlayerCard(htmlcarta);
+      this.vista.addPointsInPlayerDiv(addP);
+      this.player.hit(card);
+      this.playerCheckPoints();
+    } else if (jugador === 'computer') {
+      this.vista.addDivComputerCard(htmlcarta);
+      this.vista.addPointsInComputerDiv(addP);
+      this.computer.hit(card);
+      const val = this.computerCheckPoints();
+      return val;
     }
-
-    iniciar(allCards){
-        let card = allCards.getCard();
-        let image = `img/${card.suit}/${card.suit}_${card.number}.jpg`
-        this.player.hit(card);
-        this.vista.changeBackgroundCardPlayer(image);
-        let addP = `<p>${card.value} points</p>`;
-        this.vista.addPointsInPlayerDiv(addP)
-        card = allCards.getCard();
-        image = `img/${card.suit}/${card.suit}_${card.number}.jpg`
-        this.computer.hit(card);
-        this.vista.changeBackgroundCardComputer(image);
-        addP = `<p>${card.value} points</p>`;
-        this.vista.addPointsInComputerDiv(addP)
-        this.vista.buttonsStartStyle();
-    }
-
-    jugada(allCards, jugador){
-        let card = allCards.getCard();
-
-        let image = `img/${card.suit}/${card.suit}_${card.number}.jpg`;
-        let htmlcarta = `<div id="${jugador}-cards" style="background-image: url('${image}')"></div>`;
-        let addP = `<p>${card.value} points</p>`;
-
-        if(jugador == "player"){
-            this.vista.addDivPlayerCard(htmlcarta);
-            this.vista.addPointsInPlayerDiv(addP);
-            this.player.hit(card);
-            this.playerCheckPoints();
-
-        }else if(jugador == "computer"){
-            this.vista.addDivComputerCard(htmlcarta);
-            this.vista.addPointsInComputerDiv(addP);
-            this.computer.hit(card);
-            let val = this.computerCheckPoints();
-            return val
-        } 
-    }
-
-    computerPlays(allCards){
-        let val = this.computerCheckPoints();
-        if(val == "computer"){
-            this.gameWinner(val);
-        }else{
-            while(true){
-                val = this.jugada(allCards, "computer");
-                if(val != "continue"){
-                    this.gameWinner(val);
-                    break;
-                }
-            }
-        }  
-    }
-
-    playerCheckPoints(){
-        let totalPoints = this.player.allPoints();
-        if(totalPoints > 7.5){
-            this.gameWinner("computer");
+  }
+  /**
+   * Explicació de game
+   * @param {Deck} allCards
+   */
+  computerPlays(allCards) {
+    let val = this.computerCheckPoints();
+    if (val === 'computer') {
+      this.gameWinner(val);
+    } else {
+      while (true) {
+        val = this.jugada(allCards, 'computer');
+        if (val !== 'continue') {
+          this.gameWinner(val);
+          break;
         }
+      }
     }
-
-    computerCheckPoints(){
-        let totalPlayerPoints = this.player.allPoints();
-        let totalComputerPoints = this.computer.allPoints();
-
-        if(totalComputerPoints > totalPlayerPoints && totalComputerPoints <= 7.5 || totalComputerPoints == totalPlayerPoints){
-            return "computer";
-        }else if(totalComputerPoints > 7.5){
-            return "player";
-        }else{
-            return "continue";
-        }
+  }
+  /**
+   * Explicació de game
+   */
+  playerCheckPoints() {
+    const totalPoints = this.player.allPoints();
+    if (totalPoints > 7.5) {
+      this.gameWinner('computer');
     }
+  }
+  /**
+   * Explicació de game
+   * @return {String}
+   */
+  computerCheckPoints() {
+    const plypoints = this.player.allPoints();
+    const comppoints = this.computer.allPoints();
 
-    acabaTorn(allCards){
-        this.vista.buttonsNoneStyle(); 
-        this.computerPlays(allCards);
+    if (comppoints > plypoints && comppoints <= 7.5 ||comppoints===plypoints) {
+      return 'computer';
+    } else if (comppoints > 7.5) {
+      return 'player';
+    } else {
+      return 'continue';
     }
-
-    gameWinner(nameWinner){
-        this.vista.buttonsNoneStyle(); 
-        this.vista.stateDivWinnerGame(nameWinner);
-    }
-
-    resetGame(allCards){
-        this.vista.resetVista();
-        this.player.resetStats();
-        this.computer.resetStats();
-        this.vista.buttonsStartStyle();
-        this.jugada(allCards, "player");
-        this.jugada(allCards, "computer");
-    }
+  }
+  /**
+   * Explicació de game
+   * @param {Deck} allCards
+   */
+  acabaTorn(allCards) {
+    this.vista.buttonsNoneStyle();
+    this.computerPlays(allCards);
+  }
+  /**
+   * Explicació de game
+   * @param {String} nameWinner
+   */
+  gameWinner(nameWinner) {
+    this.vista.buttonsNoneStyle();
+    this.vista.stateDivWinnerGame(nameWinner);
+  }
+  /**
+   * Explicació de game
+   * @param {Deck} allCards
+   */
+  resetGame(allCards) {
+    this.vista.resetVista();
+    this.player.resetStats();
+    this.computer.resetStats();
+    this.vista.buttonsStartStyle();
+    this.jugada(allCards, 'player');
+    this.jugada(allCards, 'computer');
+  }
 }
