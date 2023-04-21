@@ -79,11 +79,12 @@ export default class Game {
     if (val === 'computer') {
       this.gameWinner(val);
     } else {
-      while (true) {
+      let playing = true;
+      while (playing) {
         val = this.jugada(allCards, 'computer');
         if (val !== 'continue') {
           this.gameWinner(val);
-          break;
+          playing = false;
         }
       }
     }
