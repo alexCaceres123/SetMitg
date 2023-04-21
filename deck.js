@@ -6,10 +6,10 @@ import Card from './card.js';
  */
 export default class Deck {
   /**
-   * @param {string} cards
+   * Constructor de deck amb les cartes
    */
-  constructor(cards) {
-    this.cards = cards;
+  constructor() {
+    this.cards =[];
   }
 
   /**
@@ -48,7 +48,7 @@ export default class Deck {
 
   /**
    * Funció que serà cridada en la classe game
-   * que retornara una clarta de la Deck
+   * que retornara una carta de la Deck
    * @return {Card}
    */
   getCard() {
