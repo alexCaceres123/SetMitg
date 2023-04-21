@@ -5,12 +5,10 @@
 export default class Jugador {
   /**
    * @param {string} name
-   * @param {int} money
    */
-  constructor(name, money) {
+  constructor(name) {
     this.cards = [];
     this.name = name;
-    this.money = money;
     this.points = 0;
   }
 
