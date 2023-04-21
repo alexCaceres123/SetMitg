@@ -6,6 +6,9 @@ import Card from "../card.js";
 class TestVista {
   constructor() {
       this.contStateDivWinnerGame = 0;
+      this.contButtonsNoneStyle = 0;
+      this.contResetVista = 0;
+      this.contButtonsStartStyle = 0;
   }
 
   listen(func1, func2, func3, func4) {
@@ -18,6 +21,7 @@ class TestVista {
   }
 
   buttonsStartStyle() {
+      this.contButtonsStartStyle++;
   }
 
   addDivPlayerCard(template) {
@@ -32,6 +36,7 @@ class TestVista {
   }
 
   buttonsNoneStyle() {
+      this.contButtonsNoneStyle++;
   }
 
   stateDivWinnerGame(nameWinner) {
@@ -39,6 +44,7 @@ class TestVista {
   }
 
   resetVista() {
+      this.contResetVista++;
   }
 }
 describe('Unit test Game', () => {
@@ -112,5 +118,73 @@ describe('Unit test Game', () => {
         player.hit(CartaPlayer2);
         game.playerCheckPoints();
         expect(vista.contStateDivWinnerGame).toBe(1);
+    });
+
+    test('Funcio computerCheckPoints()', () => {
+        const allcards = new Deck();
+        const player = new Jugador('Player');
+        const computer = new Jugador('Computer');
+        const vista = new TestVista();
+        const game = new Game(player, computer, vista);
+
+        let CartaPlayer = new Card("oros", 3, 3);
+        let CartaComputer = new Card("oros", 2, 2);
+        player.hit(CartaPlayer);
+        computer.hit(CartaComputer);
+        let returnVal = game.computerCheckPoints();
+        expect(returnVal).toBe("continue");
+
+        player.cards = [];
+        computer.cards = [];
+        CartaPlayer = new Card("oros", 3, 6);
+        CartaComputer = new Card("oros", 4, 5);
+        player.hit(CartaPlayer);
+        computer.hit(CartaComputer);
+        returnVal = game.computerCheckPoints();
+        expect(returnVal).toBe("computer");
+
+        computer.cards = []
+        CartaComputer = new Card("oros", 8, 5);
+        computer.hit(CartaComputer)
+        returnVal = game.computerCheckPoints();
+        expect(returnVal).toBe("player");
+    });
+
+    test('Funcio acabarTorn()', () => {
+        const allcards = new Deck();
+        const player = new Jugador('Player');
+        const computer = new Jugador('Computer');
+        const vista = new TestVista();
+        const game = new Game(player, computer, vista);
+        allcards.createDeck();
+        game.acabaTorn(allcards);                           //La funcio buttonsNoneStyle s'executa dos cops perque la cirdo
+        expect(vista.contButtonsNoneStyle).toBe(2); // al acabarTorn() hi ha computerPlays(), això vol dir que funciona bé
+    });
+
+    test('Funcio gameWinner()', () => {
+        const allcards = new Deck();
+        const player = new Jugador('Player');
+        const computer = new Jugador('Computer');
+        const vista = new TestVista();
+        const game = new Game(player, computer, vista);
+        allcards.createDeck();
+        game.gameWinner("player");
+        expect(vista.contButtonsNoneStyle).toBe(1);
+        expect(vista.contButtonsNoneStyle).toBe(1);
+    });
+
+    test('Funcio resetGame()', () => {
+        const allcards = new Deck();
+        const player = new Jugador('Player');
+        const computer = new Jugador('Computer');
+        const vista = new TestVista();
+        const game = new Game(player, computer, vista);
+        allcards.createDeck();
+        game.resetGame(allcards);
+        expect(vista.contButtonsStartStyle).toBe(1);
+        expect(vista.contResetVista).toBe(1);
+        expect(player.cards.length).toBe(1);
+        expect(computer.cards.length).toBe(1);
+        expect(allcards.cards.length).toBe(38);
     });
 });
